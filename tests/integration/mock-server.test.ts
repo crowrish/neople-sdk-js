@@ -268,7 +268,7 @@ describe('Integration Tests - Mock Server', () => {
 
       await expect(
         client.searchCharacter('홍길동')
-      ).rejects.toThrow('The operation was aborted');
+      ).rejects.toThrow('Request timeout: The request took too long to complete.');
     });
   });
 });

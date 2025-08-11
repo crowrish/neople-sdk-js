@@ -34,8 +34,13 @@
   "files": [
     "dist/",
     "README.md",
+    "README.en.md",
     "LICENSE"
   ],
+  "homepage": "https://github.com/crowrish/neople-sdk-js#readme",
+  "bugs": {
+    "url": "https://github.com/crowrish/neople-sdk-js/issues"
+  },
   "dependencies": {
     "neople-openapi-types": "^0.1.0"
   },
