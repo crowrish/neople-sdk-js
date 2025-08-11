@@ -19,3 +19,32 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+IMPORTANT NOTICE REGARDING NEOPLE OPEN API:
+
+This SDK is a client library for accessing Neople Open API and is subject to
+additional terms and restrictions:
+
+1. API DATA RIGHTS AND USAGE
+   - All API data and content rights belong to Neople Inc. (주식회사 네오플)
+   - Users receive only limited usage rights to access API data
+   - API data cannot be used for commercial purposes without explicit permission
+   - Users must not redistribute API data to third parties without prior consent
+
+2. ATTRIBUTION REQUIREMENTS  
+   - When using API data, users must explicitly indicate usage of "Neople Open API Service" (네오플 오픈 API 서비스)
+   - Users must not imitate or misuse Neople's brand or trademarks
+   - Proper attribution must be maintained in applications using this SDK
+
+3. COMPLIANCE OBLIGATIONS
+   - Users must comply with Neople Open API Terms of Service: https://developers.neople.co.kr/contents/policy
+   - API access may be revoked at any time without notice
+   - Users are responsible for ensuring compliance with all applicable terms
+
+4. DISCLAIMER
+   - This SDK is an independent client library and is not officially endorsed by Neople Inc.
+   - The SDK author assumes no responsibility for API service availability or policy changes
+   - Users use this SDK and access API services at their own risk
+
+For complete terms and conditions, please refer to:
+https://developers.neople.co.kr/contents/policy
