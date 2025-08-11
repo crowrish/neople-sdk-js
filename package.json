@@ -1,0 +1,75 @@
+{
+  "name": "neople-sdk-js",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for Neople Open API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "keywords": [
+    "neople",
+    "dungeon-fighter",
+    "cyphers",
+    "api",
+    "typescript",
+    "sdk"
+  ],
+  "author": "crowrish",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crowrish/neople-sdk-js.git"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "neople-openapi-types": "^0.1.0"
+  },
+  "peerDependencies": {
+    "axios": ">=0.21.0",
+    "node-fetch": ">=2.0.0",
+    "got": ">=11.0.0"
+  },
+  "peerDependenciesMeta": {
+    "axios": {
+      "optional": true
+    },
+    "node-fetch": {
+      "optional": true
+    },
+    "got": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "axios": "^1.0.0",
+    "node-fetch": "^3.0.0",
+    "got": "^13.0.0",
+    "@types/node-fetch": "^2.6.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

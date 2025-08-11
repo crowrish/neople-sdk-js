@@ -1,1 +1,388 @@
 # neople-sdk-js
+
+[![English](https://img.shields.io/badge/README-English-blue)](./README.en.md)
+
+네오플 오픈 API를 위한 TypeScript SDK
+
+## 중요 공지사항
+
+이 SDK는 네오플 오픈 API를 위한 TypeScript/JavaScript 클라이언트입니다.
+- [네오플 오픈 API 서비스 이용약관](https://developers.neople.co.kr/contents/policy)을 반드시 준수해야 합니다
+- API 데이터의 상업적 이용은 제한됩니다  
+- API 사용 시 "네오플 오픈 API 서비스" 출처 표시가 필요합니다
+- 모든 API 데이터의 권리는 ㈜네오플에 있습니다
+
+## 설치
+
+```bash
+npm install neople-sdk-js
+```
+
+## 빠른 시작
+
+### 던전앤파이터
+
+```typescript
+import { NeopleDFClient } from 'neople-sdk-js';
+
+const dfClient = new NeopleDFClient(process.env.NEOPLE_DF_API_KEY);
+
+// 캐릭터 검색
+const characters = await dfClient.searchCharacter('홍길동');
+
+// 캐릭터 정보 조회
+const character = await dfClient.getCharacter('cain', 'characterId');
+
+// 캐릭터 장비 정보 조회
+const equipment = await dfClient.getCharacterEquipment('cain', 'characterId');
+```
+
+### 사이퍼즈
+
+```typescript
+import { NeopleCyphersClient } from 'neople-sdk-js';
+
+const cyphersClient = new NeopleCyphersClient(process.env.NEOPLE_CYPHERS_API_KEY);
+
+// 플레이어 검색
+const players = await cyphersClient.searchPlayer('플레이어닉네임');
+
+// 플레이어 정보 조회
+const playerInfo = await cyphersClient.getPlayerInfo('playerId');
+
+// 플레이어 매치 기록 조회
+const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: 'rating' });
+```
+
+## 지원하는 HTTP 클라이언트
+
+SDK는 **기본적으로 Node.js 내장 fetch를 사용**하며, 어댑터 패턴을 통해 다양한 HTTP 클라이언트 라이브러리를 지원합니다:
+
+### FetchAdapter (기본값)
+**별도 의존성 없이 Node.js 18+ 내장 fetch를 사용합니다.**
+
+```typescript
+import { NeopleDFClient, FetchAdapter } from 'neople-sdk-js';
+
+// 기본 어댑터 (내장 fetch 사용, 의존성 없음)
+const client = new NeopleDFClient(process.env.NEOPLE_DF_API_KEY);
+
+// 또는 명시적으로 FetchAdapter 사용
+const clientWithFetch = new NeopleDFClient(
+  process.env.NEOPLE_DF_API_KEY,
+  new FetchAdapter()
+);
+
+// API 호출 예제 - 내부적으로 Node.js 내장 fetch 사용
+const result = await client.searchCharacter('홍길동');
+console.log(result);
+```
+
+### AxiosAdapter
+axios 라이브러리 사용
+
+```typescript
+import { NeopleDFClient, AxiosAdapter } from 'neople-sdk-js';
+import axios from 'axios';
+
+const client = new NeopleDFClient(
+  process.env.NEOPLE_DF_API_KEY,
+  new AxiosAdapter(axios.create({ 
+    timeout: 5000,
+    retry: 3 
+  }))
+);
+
+// API 호출 예제
+const result = await client.searchCharacter('홍길동');
+console.log(result);
+```
+
+### NodeFetchAdapter
+구버전 Node.js 지원용 (node-fetch 라이브러리 사용)
+
+```typescript
+import { NeopleDFClient, NodeFetchAdapter } from 'neople-sdk-js';
+import fetch from 'node-fetch';
+
+const client = new NeopleDFClient(
+  process.env.NEOPLE_DF_API_KEY,
+  new NodeFetchAdapter(fetch)
+);
+
+// API 호출 예제
+const result = await client.searchCharacter('홍길동');
+console.log(result);
+```
+
+### GotAdapter
+Got 라이브러리 사용 (Node.js 최적화)
+
+```typescript
+import { NeopleDFClient, GotAdapter } from 'neople-sdk-js';
+import got from 'got';
+
+const client = new NeopleDFClient(
+  process.env.NEOPLE_DF_API_KEY,
+  new GotAdapter(got.extend({
+    timeout: { request: 5000 },
+    retry: { limit: 2 }
+  }))
+);
+
+// API 호출 예제
+const result = await client.searchCharacter('홍길동');
+console.log(result);
+```
+
+## 에러 처리
+
+모든 HTTP 어댑터는 다양한 라이브러리의 에러를 `NeopleApiError`로 통일합니다.
+
+```typescript
+import { NeopleDFClient, NeopleApiError } from 'neople-sdk-js';
+
+const client = new NeopleDFClient(process.env.NEOPLE_DF_API_KEY);
+
+try {
+  const result = await client.searchCharacter('존재하지않는캐릭터');
+} catch (error) {
+  if (error instanceof NeopleApiError) {
+    console.log(`API 오류: ${error.status} - ${error.message}`);
+    // error.response에서 원본 응답 데이터 확인 가능
+  } else {
+    console.log('네트워크 오류:', error.message);
+  }
+}
+```
+
+### 어댑터별 에러 처리 통일화
+
+각 HTTP 라이브러리마다 다른 에러 형태를 동일하게 처리합니다:
+
+```typescript
+// FetchAdapter 사용 시
+const fetchClient = new NeopleDFClient(apiKey, new FetchAdapter());
+
+// AxiosAdapter 사용 시  
+const axiosClient = new NeopleDFClient(apiKey, new AxiosAdapter(axios.create()));
+
+// GotAdapter 사용 시
+const gotClient = new NeopleDFClient(apiKey, new GotAdapter(got.extend()));
+
+// 모든 클라이언트에서 동일한 에러 처리
+[fetchClient, axiosClient, gotClient].forEach(async (client) => {
+  try {
+    await client.searchCharacter('잘못된요청');
+  } catch (error) {
+    if (error instanceof NeopleApiError) {
+      // 어댑터와 관계없이 항상 동일한 에러 타입
+      console.log(`상태 코드: ${error.status}`);
+      console.log(`에러 메시지: ${error.message}`);
+    }
+  }
+});
+```
+
+### 브라우저 환경에서의 CORS 에러 처리
+
+브라우저 환경에서 발생할 수 있는 CORS 에러를 자동으로 감지하고 명확한 에러 메시지를 제공합니다:
+
+```typescript
+// 브라우저에서 CORS 정책으로 차단된 요청의 경우
+try {
+  const result = await client.searchCharacter('홍길동');
+} catch (error) {
+  if (error instanceof NeopleApiError && error.status === 0) {
+    if (error.message.includes('CORS Error')) {
+      console.log('CORS 에러: API 서버의 CORS 설정을 확인하세요.');
+    } else if (error.message.includes('Request timeout')) {
+      console.log('요청 시간 초과');
+    } else {
+      console.log('네트워크 에러:', error.message);
+    }
+  }
+}
+```
+
+**주요 에러 타입:**
+- **HTTP 에러** (`status > 0`): API 서버 응답 에러 (404, 500 등)
+- **CORS 에러** (`status = 0`): 브라우저 CORS 정책 차단
+- **타임아웃 에러** (`status = 0`): 요청 시간 초과
+- **네트워크 에러** (`status = 0`): 기타 네트워크 연결 문제
+
+## 주요 기능
+
+- 완전한 TypeScript 지원으로 타입 안전성 보장
+- **기본적으로 Node.js 내장 fetch 사용 (의존성 없음)**
+- 다양한 HTTP 클라이언트 지원 (Axios, Fetch, Got, node-fetch)
+- Node.js 백엔드 및 Next.js 환경 지원
+- 포괄적인 에러 처리
+- 풍부한 JSDoc 문서화
+- 던전앤파이터와 사이퍼즈 API 각각 별도 API 키 지원
+- URL만 생성하는 전용 빌더 클래스 제공
+
+## 지원하는 API
+
+### 던전앤파이터 API
+- **캐릭터**
+  - `searchCharacter()` - 캐릭터 검색
+  - `getCharacter()` - 캐릭터 기본 정보 조회
+  - `getCharacterStatus()` - 캐릭터 능력치 정보 조회
+  - `getCharacterEquipment()` - 캐릭터 장비 정보 조회
+  - `getCharacterAvatar()` - 캐릭터 아바타 정보 조회
+  - `getCharacterCreature()` - 캐릭터 크리처 정보 조회
+  - `getCharacterFlag()` - 캐릭터 국기 정보 조회
+  - `getCharacterTalisman()` - 캐릭터 탈리스만 정보 조회
+  - `getCharacterSkill()` - 캐릭터 스킬 정보 조회
+  - `getCharacterBuff()` - 캐릭터 버프 정보 조회
+  - `getCharacterTimeline()` - 캐릭터 타임라인 조회
+- **아이템**
+  - `searchItems()` - 아이템 검색
+  - `getItem()` - 아이템 상세 정보 조회
+  - `getSetItem()` - 세트 아이템 정보 조회
+  - `getMultiItem()` - 멀티 아이템 정보 조회
+- **경매장**
+  - `searchAuction()` - 경매장 검색
+  - `getAuctionSold()` - 경매장 판매 내역 조회
+
+### 사이퍼즈 API
+- **플레이어**
+  - `searchPlayer()` - 플레이어 검색
+  - `getPlayerInfo()` - 플레이어 정보 조회
+  - `getPlayerMatches()` - 플레이어 매치 기록 조회
+  - `getPlayerEquipment()` - 플레이어 장비 정보 조회
+- **매치**
+  - `getMatchDetail()` - 매치 상세 정보 조회
+- **랭킹**
+  - `getOverallRanking()` - 전체 랭킹 조회
+  - `getCharacterRanking()` - 캐릭터별 랭킹 조회
+- **아이템 & 캐릭터**
+  - `searchCyphersItems()` - 아이템 검색
+  - `getCyphersInfo()` - 사이퍼 정보 조회
+  - `getRecommendItems()` - 캐릭터별 추천 아이템 조회
+
+## 지원 환경
+
+### 완벽 지원
+- Backend Node.js (Express, Fastify, Koa 등)
+- Next.js API Routes (Pages Router, App Router)
+- Next.js Server Actions (App Router 13+)
+- 서버리스 함수 (Vercel, Netlify)
+- AWS Lambda
+- Discord/Telegram 봇
+
+### 지원하지 않음
+- 브라우저 환경 (CORS 정책으로 인한 제한)
+
+## API 키 설정
+
+던전앤파이터와 사이퍼즈는 각각 다른 API 키를 사용합니다:
+
+```bash
+# .env 파일
+NEOPLE_DF_API_KEY=your_dungeon_fighter_api_key
+NEOPLE_CYPHERS_API_KEY=your_cyphers_api_key
+```
+
+## 사용 예제
+
+### Express.js 서버
+
+```typescript
+import express from 'express';
+import { NeopleDFClient } from 'neople-sdk-js';
+
+const app = express();
+const dfClient = new NeopleDFClient(process.env.NEOPLE_DF_API_KEY);
+
+app.get('/api/character/:name', async (req, res) => {
+  try {
+    const result = await dfClient.searchCharacter(req.params.name);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+```
+
+### Next.js API Route
+
+```typescript
+// app/api/character/[name]/route.ts
+import { NeopleDFClient } from 'neople-sdk-js';
+
+const dfClient = new NeopleDFClient(process.env.NEOPLE_DF_API_KEY);
+
+export async function GET(
+  request: Request,
+  { params }: { params: { name: string } }
+) {
+  try {
+    const result = await dfClient.searchCharacter(params.name);
+    return Response.json(result);
+  } catch (error) {
+    return Response.json({ error: error.message }, { status: 500 });
+  }
+}
+```
+
+## URL만 생성하기
+
+HTTP 클라이언트를 직접 제어하거나, URL만 필요한 경우를 위한 전용 클래스를 제공합니다.
+
+### 던전앤파이터 URL 생성
+
+```typescript
+import { NeopleDFUrlBuilder } from 'neople-sdk-js';
+
+const urlBuilder = new NeopleDFUrlBuilder(process.env.NEOPLE_DF_API_KEY);
+
+// URL 생성
+const characterUrl = urlBuilder.searchCharacter('홍길동', 'cain');
+const equipmentUrl = urlBuilder.getCharacterEquipment('cain', 'characterId');
+const auctionUrl = urlBuilder.searchAuction({ itemName: '해방무기', limit: 10 });
+
+// 원하는 HTTP 클라이언트로 직접 호출
+const response = await fetch(characterUrl);
+const data = await response.json();
+```
+
+### 사이퍼즈 URL 생성
+
+```typescript
+import { NeopleCyphersUrlBuilder } from 'neople-sdk-js';
+
+const urlBuilder = new NeopleCyphersUrlBuilder(process.env.NEOPLE_CYPHERS_API_KEY);
+
+// URL 생성
+const playerUrl = urlBuilder.searchPlayer('플레이어닉네임');
+const matchUrl = urlBuilder.getPlayerMatches('playerId', { gameTypeId: 'rating' });
+const rankingUrl = urlBuilder.getOverallRanking({ limit: 10 });
+
+// axios나 다른 HTTP 클라이언트 사용
+const response = await axios.get(playerUrl);
+```
+
+### 배치 URL 생성
+
+```typescript
+const urls = urlBuilder.batch([
+  builder => builder.searchCharacter('플레이어1'),
+  builder => builder.searchCharacter('플레이어2'),
+  builder => builder.searchAuction({ itemName: '무기' })
+]);
+
+// 여러 URL을 동시에 처리
+const promises = urls.map(url => fetch(url));
+const responses = await Promise.all(promises);
+```
+
+
+## 라이선스
+
+MIT
+
+## 기여하기
+
+버그 리포트, 기능 요청, Pull Request를 환영합니다!

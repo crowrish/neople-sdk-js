@@ -1,0 +1,83 @@
+{
+  "playerSearch": {
+    "rows": [
+      {
+        "playerId": "test-player-id-123",
+        "nickname": "테스트플레이어",
+        "grade": 20,
+        "clanName": "테스트클랜"
+      }
+    ]
+  },
+  "playerInfo": {
+    "playerId": "test-player-id-123",
+    "nickname": "테스트플레이어",
+    "grade": 20,
+    "clanName": "테스트클랜"
+  },
+  "playerMatches": {
+    "date": "2024-01-01",
+    "gameTypeId": "rating",
+    "matches": [
+      {
+        "matchId": "test-match-id-123",
+        "playTime": 1200,
+        "result": "win",
+        "playTypeName": "공식경기",
+        "characterId": "test-character-id",
+        "characterName": "루이스",
+        "level": 20,
+        "killCount": 5,
+        "deathCount": 2,
+        "assistCount": 8,
+        "attackPoint": 1500,
+        "damagePoint": 25000,
+        "battlePoint": 3200,
+        "sightPoint": 800
+      }
+    ]
+  },
+  "overallRanking": {
+    "date": "2024-01-01",
+    "rankingType": "rating",
+    "rows": [
+      {
+        "playerId": "test-player-id-123",
+        "nickname": "테스트플레이어",
+        "grade": 20,
+        "rp": 2500,
+        "rankingPoint": 2500,
+        "tierName": "에이스",
+        "win": 150,
+        "lose": 50,
+        "stop": 5
+      }
+    ]
+  },
+  "cyphersInfo": {
+    "rows": [
+      {
+        "characterId": "test-character-id-123",
+        "characterName": "루이스",
+        "school": "지하격투장",
+        "mastery": "근접공격",
+        "weapon": "권투글러브",
+        "attackType": "근거리",
+        "position": "탱커"
+      }
+    ]
+  },
+  "itemSearch": {
+    "rows": [
+      {
+        "itemId": "test-item-id-123",
+        "itemName": "테스트 아이템",
+        "slotCode": "weapon",
+        "rarityCode": "rare",
+        "equipSlotCode": "weapon",
+        "itemTypeCode": "attack",
+        "seasonCode": "S1"
+      }
+    ]
+  }
+}

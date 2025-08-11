@@ -1,0 +1,79 @@
+{
+  "characterSearch": {
+    "rows": [
+      {
+        "characterId": "test-character-id-123",
+        "characterName": "홍길동",
+        "level": 110,
+        "jobId": "test-job-id",
+        "jobGrowId": "test-job-grow-id",
+        "jobName": "마법사",
+        "jobGrowName": "엘레멘탈 마스터"
+      }
+    ]
+  },
+  "characterDetail": {
+    "characterId": "test-character-id-123",
+    "characterName": "홍길동",
+    "level": 110,
+    "jobId": "test-job-id",
+    "jobGrowId": "test-job-grow-id",
+    "jobName": "마법사",
+    "jobGrowName": "엘레멘탈 마스터",
+    "adventureName": "모험가이름",
+    "guildId": "test-guild-id",
+    "guildName": "테스트길드"
+  },
+  "characterEquipment": {
+    "characterId": "test-character-id-123",
+    "characterName": "홍길동",
+    "level": 110,
+    "jobId": "test-job-id",
+    "jobGrowId": "test-job-grow-id",
+    "jobName": "마법사",
+    "jobGrowName": "엘레멘탈 마스터",
+    "adventureName": "모험가이름",
+    "equipment": [
+      {
+        "slotId": "WEAPON",
+        "slotName": "무기",
+        "itemId": "test-weapon-id",
+        "itemName": "테스트 무기",
+        "itemRarity": "에픽",
+        "reinforce": 10
+      }
+    ]
+  },
+  "auctionSearch": {
+    "rows": [
+      {
+        "auctionNo": "test-auction-123",
+        "itemId": "test-item-id",
+        "itemName": "테스트 아이템",
+        "itemAvailableLevel": 85,
+        "itemRarity": "에픽",
+        "unitPrice": 1000000,
+        "count": 1
+      }
+    ]
+  },
+  "itemSearch": {
+    "rows": [
+      {
+        "itemId": "test-item-id-123",
+        "itemName": "테스트 아이템",
+        "itemRarity": "에픽",
+        "itemTypeId": "weapon",
+        "itemAvailableLevel": 85
+      }
+    ]
+  },
+  "itemDetail": {
+    "itemId": "test-item-id-123",
+    "itemName": "테스트 아이템",
+    "itemRarity": "에픽",
+    "itemTypeId": "weapon",
+    "itemAvailableLevel": 85,
+    "itemObtainInfo": "던전 드롭"
+  }
+}
