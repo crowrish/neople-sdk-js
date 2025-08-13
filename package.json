@@ -42,12 +42,12 @@
     "url": "https://github.com/crowrish/neople-sdk-js/issues"
   },
   "dependencies": {
-    "neople-openapi-types": "^0.1.0"
+    "neople-openapi-types": "^0.3.0"
   },
   "peerDependencies": {
     "axios": ">=0.21.0",
-    "node-fetch": ">=2.0.0",
-    "got": ">=11.0.0"
+    "got": ">=11.0.0",
+    "node-fetch": ">=2.0.0"
   },
   "peerDependenciesMeta": {
     "axios": {
@@ -61,18 +61,18 @@
     }
   },
   "devDependencies": {
-    "typescript": "^5.0.0",
-    "@types/node": "^20.0.0",
-    "jest": "^29.0.0",
     "@types/jest": "^29.0.0",
-    "ts-jest": "^29.0.0",
-    "eslint": "^8.0.0",
+    "@types/node": "^20.0.0",
+    "@types/node-fetch": "^2.6.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "axios": "^1.0.0",
-    "node-fetch": "^3.0.0",
+    "eslint": "^8.0.0",
     "got": "^13.0.0",
-    "@types/node-fetch": "^2.6.0"
+    "jest": "^29.0.0",
+    "node-fetch": "^3.0.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=16.0.0"

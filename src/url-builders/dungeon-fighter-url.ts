@@ -59,7 +59,7 @@ export class NeopleDFUrlBuilder extends BaseUrlBuilder {
   }
 
   /**
-   * 캐릭터 국기 정보 조회 URL 생성
+   * 캐릭터 휘장 정보 조회 URL 생성
    * @param serverId 서버 ID
    * @param characterId 캐릭터 ID
    */

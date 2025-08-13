@@ -7,7 +7,10 @@ export class CyphersClient extends BaseClient {
   // 플레이어 검색
   async searchPlayer(
     nickname: string, 
-    params?: { wordType?: 'match' | 'full'; limit?: number }
+    params?: { 
+      wordType?: 'match' | 'full'; 
+      limit?: number;
+    }
   ): Promise<{ rows: Cyphers.PlayerSearchResult[] }> {
     return this.request<{ rows: Cyphers.PlayerSearchResult[] }>('/cy/players', {
       nickname,
@@ -23,7 +26,13 @@ export class CyphersClient extends BaseClient {
   // 플레이어 매치 기록 조회
   async getPlayerMatches(
     playerId: string,
-    params?: Partial<Cyphers.PlayerMatchesParams>
+    params?: {
+      gameTypeId?: string;
+      startDate?: string;
+      endDate?: string;
+      limit?: number;
+      next?: string;
+    }
   ): Promise<Cyphers.PlayerMatches> {
     return this.request<Cyphers.PlayerMatches>(`/cy/players/${playerId}/matches`, params);
   }
@@ -39,7 +48,11 @@ export class CyphersClient extends BaseClient {
   }
 
   // 전체 랭킹 조회
-  async getOverallRanking(params?: Cyphers.OverallRankingParams): Promise<Cyphers.RankingInfo> {
+  async getOverallRanking(params?: {
+    playerId?: string;
+    offset?: number;
+    limit?: number;
+  }): Promise<Cyphers.RankingInfo> {
     return this.request<Cyphers.RankingInfo>('/cy/ranking/ratingpoint', params);
   }
 
@@ -47,7 +60,11 @@ export class CyphersClient extends BaseClient {
   async getCharacterRanking(
     characterId: string,
     rankingType: 'winCount' | 'winRate' | 'killCount' | 'assistCount' | 'exp',
-    params?: Partial<Cyphers.CharacterRankingParams>
+    params?: {
+      playerId?: string;
+      offset?: number;
+      limit?: number;
+    }
   ): Promise<Cyphers.RankingInfo> {
     return this.request<Cyphers.RankingInfo>(
       `/cy/ranking/characters/${characterId}/${rankingType}`,
@@ -56,7 +73,15 @@ export class CyphersClient extends BaseClient {
   }
 
   // 아이템 검색
-  async searchItems(params: Cyphers.ItemSearchParams): Promise<{ rows: Cyphers.ItemSearchResult[] }> {
+  async searchItems(params: {
+    itemName: string;
+    limit?: number;
+    wordType?: 'match' | 'front' | 'full';
+    characterId?: string;
+    slotCode?: string;
+    rarityCode?: string;
+    seasonCode?: string;
+  }): Promise<{ rows: Cyphers.ItemSearchResult[] }> {
     return this.request<{ rows: Cyphers.ItemSearchResult[] }>('/cy/battleitems', params);
   }
 
@@ -68,5 +93,23 @@ export class CyphersClient extends BaseClient {
   // 캐릭터별 추천 아이템 조회
   async getRecommendItems(characterId: string): Promise<any> {
     return this.request<any>(`/cy/characters/${characterId}/items`);
+  }
+
+  // 투신전 랭킹 조회
+  async getTsjRanking(
+    tsjType: 'melee' | 'ranged',
+    params?: Partial<Cyphers.OverallRankingParams>
+  ): Promise<Cyphers.RankingInfo> {
+    return this.request<Cyphers.RankingInfo>(`/cy/ranking/tsj/${tsjType}`, params);
+  }
+
+  // 아이템 상세 정보 조회
+  async getItemDetail(itemId: string): Promise<Cyphers.ItemDetail> {
+    return this.request<Cyphers.ItemDetail>(`/cy/battleitems/${itemId}`);
+  }
+
+  // 다중 아이템 조회
+  async getMultiItems(itemIds: string): Promise<{ rows: Cyphers.ItemDetail[] }> {
+    return this.request<{ rows: Cyphers.ItemDetail[] }>('/cy/multi/battleitems', { itemIds });
   }
 }

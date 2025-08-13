@@ -232,7 +232,7 @@ try {
   - `getCharacterEquipment()` - 캐릭터 장비 정보 조회
   - `getCharacterAvatar()` - 캐릭터 아바타 정보 조회
   - `getCharacterCreature()` - 캐릭터 크리처 정보 조회
-  - `getCharacterFlag()` - 캐릭터 국기 정보 조회
+  - `getCharacterFlag()` - 캐릭터 휘장 정보 조회
   - `getCharacterTalisman()` - 캐릭터 탈리스만 정보 조회
   - `getCharacterSkill()` - 캐릭터 스킬 정보 조회
   - `getCharacterBuff()` - 캐릭터 버프 정보 조회

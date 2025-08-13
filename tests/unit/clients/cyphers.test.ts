@@ -297,6 +297,77 @@ describe('CyphersClient', () => {
     });
   });
 
+  describe('new API methods', () => {
+    describe('getTsjRanking', () => {
+      it('should get TSJ melee ranking', async () => {
+        const mockRanking = { rows: [{ rank: 1, nickname: '테스트' }] };
+        mockAdapter.setMockResponse(mockRanking);
+        
+        const result = await client.getTsjRanking('melee');
+        
+        expect(result).toEqual(mockRanking);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/cy/ranking/tsj/melee`);
+        expect(lastCall.config?.params).toEqual({
+          apikey: testApiKey,
+        });
+      });
+
+      it('should get TSJ ranged ranking with parameters', async () => {
+        const mockRanking = { rows: [{ rank: 1, nickname: '테스트' }] };
+        mockAdapter.setMockResponse(mockRanking);
+        
+        const params = { limit: 10 };
+        const result = await client.getTsjRanking('ranged', params);
+        
+        expect(result).toEqual(mockRanking);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/cy/ranking/tsj/ranged`);
+        expect(lastCall.config?.params).toEqual({
+          ...params,
+          apikey: testApiKey,
+        });
+      });
+    });
+
+    describe('getItemDetail', () => {
+      it('should get item detail', async () => {
+        const mockItem = { itemId: 'item-123', itemName: '테스트 아이템' };
+        mockAdapter.setMockResponse(mockItem);
+        
+        const result = await client.getItemDetail('item-123');
+        
+        expect(result).toEqual(mockItem);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/cy/battleitems/item-123`);
+        expect(lastCall.config?.params).toEqual({
+          apikey: testApiKey,
+        });
+      });
+    });
+
+    describe('getMultiItems', () => {
+      it('should get multiple items', async () => {
+        const mockItems = { rows: [{ itemId: 'item-1' }, { itemId: 'item-2' }] };
+        mockAdapter.setMockResponse(mockItems);
+        
+        const result = await client.getMultiItems('item-1,item-2');
+        
+        expect(result).toEqual(mockItems);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/cy/multi/battleitems`);
+        expect(lastCall.config?.params).toEqual({
+          itemIds: 'item-1,item-2',
+          apikey: testApiKey,
+        });
+      });
+    });
+  });
+
   describe('API key handling', () => {
     it('should include API key in all requests', async () => {
       mockAdapter.setMockResponse({});
@@ -305,6 +376,8 @@ describe('CyphersClient', () => {
       await client.getPlayerInfo('player-123');
       await client.getOverallRanking();
       await client.getCyphersInfo();
+      await client.getTsjRanking('melee');
+      await client.getItemDetail('item-123');
       
       mockAdapter.calls.forEach(call => {
         expect(call.config?.params?.apikey).toBe(testApiKey);
