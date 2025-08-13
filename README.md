@@ -1,6 +1,7 @@
 # neople-sdk-js
 
 [![English](https://img.shields.io/badge/README-English-blue)](./README.en.md)
+[![Documentation](https://img.shields.io/badge/Documentation-GitHub%20Pages-green)](https://crowrish.github.io/neople-sdk-js-docs/)
 
 네오플 오픈 API를 위한 TypeScript SDK
 
