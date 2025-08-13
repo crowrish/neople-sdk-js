@@ -1,17 +1,17 @@
 # neople-sdk-js
 
+
 [![English](https://img.shields.io/badge/README-English-blue)](./README.en.md)
 [![Documentation](https://img.shields.io/badge/Documentation-GitHub%20Pages-green)](https://crowrish.github.io/neople-sdk-js-docs/)
+[![npm version](https://img.shields.io/npm/v/neople-sdk-js)](https://www.npmjs.com/package/neople-sdk-js)
 
 네오플 오픈 API를 위한 TypeScript SDK
 
-## 중요 공지사항
-
 이 SDK는 네오플 오픈 API를 위한 TypeScript/JavaScript 클라이언트입니다.
-- [네오플 오픈 API 서비스 이용약관](https://developers.neople.co.kr/contents/policy)을 반드시 준수해야 합니다
-- API 데이터의 상업적 이용은 제한됩니다  
-- API 사용 시 "네오플 오픈 API 서비스" 출처 표시가 필요합니다
-- 모든 API 데이터의 권리는 ㈜네오플에 있습니다
+[네오플 오픈 API 서비스 이용약관](https://developers.neople.co.kr/contents/policy)을 반드시 준수해야 합니다.
+
+## Documentation
+[https://crowrish.github.io/neople-sdk-js-docs](https://crowrish.github.io/neople-sdk-js-docs)
 
 ## 설치
 
