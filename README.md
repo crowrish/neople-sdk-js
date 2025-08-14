@@ -5,7 +5,8 @@
 [![Documentation](https://img.shields.io/badge/Documentation-GitHub%20Pages-green)](https://crowrish.github.io/neople-sdk-js-docs/)
 [![npm version](https://img.shields.io/npm/v/neople-sdk-js)](https://www.npmjs.com/package/neople-sdk-js)
 
-<img width="1200" height="630" alt="Frame 1" src="https://github.com/user-attachments/assets/53de2d07-6934-4bfa-b987-4a75be005146" />
+<img width="1200" height="400" alt="Frame 2" src="https://github.com/user-attachments/assets/49ffab27-7b04-45c6-9daa-e53ca605b1f2" />
+
 
 
 네오플 오픈 API를 위한 TypeScript SDK
