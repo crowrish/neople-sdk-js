@@ -15,9 +15,6 @@ const mockFetch = global.fetch as jest.MockedFunction<typeof fetch>;
 describe('End-to-End Integration Tests', () => {
   const testApiKey = 'test-e2e-key';
 
-  beforeEach(() => {
-    mockFetch.mockClear();
-  });
 
   describe('Client and URL Builder consistency', () => {
     it('should generate the same URLs between client and URL builder for DF', async () => {

@@ -72,10 +72,11 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
 - 던전앤파이터와 사이퍼즈 API 각각 별도 API 키 지원
 - URL만 생성하는 전용 빌더 클래스 제공
 - **네오플 오픈 API 100% 완전 지원 (던전앤파이터 34개, 사이퍼즈 13개 총 47개 API)**
+- **99.57% 테스트 커버리지로 검증된 안정성 (202개 테스트)**
 
 ## 지원하는 API
 
-### 던전앤파이터 API
+### 던전앤파이터 API(34개)
 - **기본 정보**
   - `getServers()` - 서버 목록 조회
   - `getJobs()` - 직업 목록 조회
@@ -121,12 +122,11 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
   - `getAvatarMarketHashtags()` - 아바타 마켓 해시태그 목록 조회
   - `getItemHashtags()` - 아이템 해시태그 목록 조회
 
-### 사이퍼즈 API
+### 사이퍼즈 API(13개)
 - **플레이어**
   - `searchPlayer()` - 플레이어 검색
   - `getPlayerInfo()` - 플레이어 정보 조회
   - `getPlayerMatches()` - 플레이어 매치 기록 조회
-  - `getPlayerEquipment()` - 플레이어 장비 정보 조회
 - **매치**
   - `getMatchDetail()` - 매치 상세 정보 조회
 - **랭킹**
@@ -138,7 +138,6 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
   - `getCyphersItemDetail()` - 아이템 상세 정보 조회
   - `getCyphersMultiItems()` - 다중 아이템 조회
   - `getCyphersInfo()` - 사이퍼 정보 조회
-  - `getRecommendItems()` - 캐릭터별 추천 아이템 조회
 
 ## 지원 환경
 

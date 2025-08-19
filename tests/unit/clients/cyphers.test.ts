@@ -103,19 +103,6 @@ describe('CyphersClient', () => {
       });
     });
 
-    describe('getPlayerEquipment', () => {
-      it('should get player equipment with correct parameters', async () => {
-        const mockResponse = { playerId: 'player-123', equipment: [] };
-        mockAdapter.setMockResponse(mockResponse);
-        
-        const result = await client.getPlayerEquipment('player-123');
-        
-        expect(result).toEqual(mockResponse);
-        
-        const lastCall = mockAdapter.getLastCall();
-        expect(lastCall.url).toBe(`${baseUrl}/cy/players/player-123/battleitems`);
-      });
-    });
   });
 
   describe('match methods', () => {
@@ -268,22 +255,6 @@ describe('CyphersClient', () => {
       });
     });
 
-    describe('getRecommendItems', () => {
-      it('should get recommend items with correct parameters', async () => {
-        const mockResponse = { characterId: 'character-123', items: [] };
-        mockAdapter.setMockResponse(mockResponse);
-        
-        const result = await client.getRecommendItems('character-123');
-        
-        expect(result).toEqual(mockResponse);
-        
-        const lastCall = mockAdapter.getLastCall();
-        expect(lastCall.url).toBe(`${baseUrl}/cy/characters/character-123/items`);
-        expect(lastCall.config?.params).toEqual({
-          apikey: testApiKey,
-        });
-      });
-    });
   });
 
   describe('error handling', () => {

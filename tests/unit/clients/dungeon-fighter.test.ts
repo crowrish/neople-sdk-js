@@ -537,6 +537,213 @@ describe('DungeonFighterClient', () => {
     });
   });
 
+  describe('missing method coverage', () => {
+    describe('getCharacterCreature', () => {
+      it('should get character creature equipment', async () => {
+        const mockCreature = { characterId: 'char-123', creature: {} };
+        mockAdapter.setMockResponse(mockCreature);
+        
+        const result = await client.getCharacterCreature('cain', 'char-123');
+        
+        expect(result).toEqual(mockCreature);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/servers/cain/characters/char-123/equip/creature`);
+      });
+    });
+
+    describe('getCharacterFlag', () => {
+      it('should get character flag equipment', async () => {
+        const mockFlag = { characterId: 'char-123', flag: {} };
+        mockAdapter.setMockResponse(mockFlag);
+        
+        const result = await client.getCharacterFlag('cain', 'char-123');
+        
+        expect(result).toEqual(mockFlag);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/servers/cain/characters/char-123/equip/flag`);
+      });
+    });
+
+    describe('searchSetItems', () => {
+      it('should search set items', async () => {
+        const mockSetItems = { rows: [] };
+        mockAdapter.setMockResponse(mockSetItems);
+        
+        const params = { setItemName: '용의 세트', wordType: 'match' as const };
+        const result = await client.searchSetItems(params);
+        
+        expect(result).toEqual(mockSetItems);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/setitems`);
+        expect(lastCall.config?.params).toEqual({
+          ...params,
+          apikey: testApiKey,
+        });
+      });
+    });
+
+    describe('getMultiItems', () => {
+      it('should get multiple items', async () => {
+        const mockMultiItems = { rows: [] };
+        mockAdapter.setMockResponse(mockMultiItems);
+        
+        const result = await client.getMultiItems('item1,item2,item3');
+        
+        expect(result).toEqual(mockMultiItems);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/multi/items`);
+        expect(lastCall.config?.params).toEqual({
+          itemIds: 'item1,item2,item3',
+          apikey: testApiKey,
+        });
+      });
+    });
+
+    describe('getMultiSetItems', () => {
+      it('should get multiple set items', async () => {
+        const mockMultiSetItems = { rows: [] };
+        mockAdapter.setMockResponse(mockMultiSetItems);
+        
+        const result = await client.getMultiSetItems('set1,set2,set3');
+        
+        expect(result).toEqual(mockMultiSetItems);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/multi/setitems`);
+        expect(lastCall.config?.params).toEqual({
+          setItemIds: 'set1,set2,set3',
+          apikey: testApiKey,
+        });
+      });
+    });
+
+    describe('getCharactersByFame', () => {
+      it('should get characters by fame', async () => {
+        const mockCharactersByFame = { rows: [] };
+        mockAdapter.setMockResponse(mockCharactersByFame);
+        
+        const result = await client.getCharactersByFame('cain');
+        
+        expect(result).toEqual(mockCharactersByFame);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/servers/cain/characters-fame`);
+      });
+    });
+
+    describe('getAvatarMarketSale', () => {
+      it('should get avatar market sale items', async () => {
+        const mockSaleItems = { rows: [] };
+        mockAdapter.setMockResponse(mockSaleItems);
+        
+        const params = { limit: 20, jobId: 'job-123' };
+        const result = await client.getAvatarMarketSale(params);
+        
+        expect(result).toEqual(mockSaleItems);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/avatar-market/sale`);
+        expect(lastCall.config?.params).toEqual({
+          ...params,
+          apikey: testApiKey,
+        });
+      });
+    });
+
+    describe('getAvatarMarketSold', () => {
+      it('should get avatar market sold items', async () => {
+        const mockSoldItems = { rows: [] };
+        mockAdapter.setMockResponse(mockSoldItems);
+        
+        const params = { limit: 15, jobId: 'job-123' };
+        const result = await client.getAvatarMarketSold(params);
+        
+        expect(result).toEqual(mockSoldItems);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/avatar-market/sold`);
+        expect(lastCall.config?.params).toEqual({
+          ...params,
+          apikey: testApiKey,
+        });
+      });
+    });
+
+    describe('getAvatarMarketItem', () => {
+      it('should get avatar market item detail', async () => {
+        const mockMarketItem = { goodsNo: 12345 };
+        mockAdapter.setMockResponse(mockMarketItem);
+        
+        const result = await client.getAvatarMarketItem(12345);
+        
+        expect(result).toEqual(mockMarketItem);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/avatar-market/sale/12345`);
+      });
+    });
+
+    describe('getAvatarMarketSoldItem', () => {
+      it('should get avatar market sold item detail', async () => {
+        const mockSoldItem = { goodsNo: 54321 };
+        mockAdapter.setMockResponse(mockSoldItem);
+        
+        const result = await client.getAvatarMarketSoldItem(54321);
+        
+        expect(result).toEqual(mockSoldItem);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/avatar-market/sold/54321`);
+      });
+    });
+
+    describe('getCharacterBuffSkillEquipment', () => {
+      it('should get character buff skill equipment', async () => {
+        const mockBuffEquipment = { characterId: 'char-123', skill: {} };
+        mockAdapter.setMockResponse(mockBuffEquipment);
+        
+        const result = await client.getCharacterBuffSkillEquipment('cain', 'char-123');
+        
+        expect(result).toEqual(mockBuffEquipment);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/servers/cain/characters/char-123/skill/buff/equip/equipment`);
+      });
+    });
+
+    describe('getCharacterBuffSkillAvatar', () => {
+      it('should get character buff skill avatar', async () => {
+        const mockBuffAvatar = { characterId: 'char-123', skill: {} };
+        mockAdapter.setMockResponse(mockBuffAvatar);
+        
+        const result = await client.getCharacterBuffSkillAvatar('cain', 'char-123');
+        
+        expect(result).toEqual(mockBuffAvatar);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/servers/cain/characters/char-123/skill/buff/equip/avatar`);
+      });
+    });
+
+    describe('getCharacterBuffSkillCreature', () => {
+      it('should get character buff skill creature', async () => {
+        const mockBuffCreature = { characterId: 'char-123', skill: {} };
+        mockAdapter.setMockResponse(mockBuffCreature);
+        
+        const result = await client.getCharacterBuffSkillCreature('cain', 'char-123');
+        
+        expect(result).toEqual(mockBuffCreature);
+        
+        const lastCall = mockAdapter.getLastCall();
+        expect(lastCall.url).toBe(`${baseUrl}/df/servers/cain/characters/char-123/skill/buff/equip/creature`);
+      });
+    });
+  });
+
   describe('API key handling', () => {
     it('should include API key in all requests', async () => {
       mockAdapter.setMockResponse({});

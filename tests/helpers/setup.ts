@@ -13,7 +13,28 @@ if (!global.fetch) {
 // Global test timeout
 jest.setTimeout(10000);
 
-// Clear all mocks after each test
+// Comprehensive cleanup after each test
 afterEach(() => {
   jest.clearAllMocks();
+  jest.restoreAllMocks();
+  jest.clearAllTimers();
+  jest.useRealTimers();
+  jest.resetModules();
+});
+
+// Final cleanup after all tests
+afterAll(async () => {
+  // Clear all mocks and timers
+  jest.clearAllMocks();
+  jest.restoreAllMocks();
+  jest.clearAllTimers();
+  jest.useRealTimers();
+  
+  // Allow any remaining async operations to complete
+  await new Promise(resolve => {
+    setImmediate(resolve);
+  });
+  
+  // Additional cleanup for Node.js environment
+  await new Promise(resolve => setTimeout(resolve, 10));
 });

@@ -37,13 +37,6 @@ export class NeopleCyphersUrlBuilder extends BaseUrlBuilder {
     return this.buildUrl(`/cy/players/${playerId}/matches`, params);
   }
 
-  /**
-   * 플레이어 장비 정보 조회 URL 생성
-   * @param playerId 플레이어 ID
-   */
-  getPlayerEquipment(playerId: string): string {
-    return this.buildUrl(`/cy/players/${playerId}/battleitems`);
-  }
 
   /**
    * 매치 상세 정보 조회 URL 생성
@@ -91,13 +84,6 @@ export class NeopleCyphersUrlBuilder extends BaseUrlBuilder {
     return this.buildUrl('/cy/characters', params);
   }
 
-  /**
-   * 캐릭터별 추천 아이템 조회 URL 생성
-   * @param characterId 캐릭터 ID
-   */
-  getRecommendItems(characterId: string): string {
-    return this.buildUrl(`/cy/characters/${characterId}/items`);
-  }
 
   /**
    * 여러 URL을 배치로 생성

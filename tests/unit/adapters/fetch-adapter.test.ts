@@ -10,7 +10,6 @@ describe('FetchAdapter', () => {
 
   beforeEach(() => {
     adapter = new FetchAdapter();
-    mockFetch.mockClear();
   });
 
   describe('successful requests', () => {
@@ -204,6 +203,18 @@ describe('FetchAdapter', () => {
         'https://api.example.com/test',
         expect.any(Object)
       );
+    });
+
+    it('should handle errors without message', async () => {
+      const errorWithoutMessage: any = new Error();
+      delete errorWithoutMessage.message;
+      errorWithoutMessage.name = 'UnknownError';
+      
+      mockFetch.mockRejectedValueOnce(errorWithoutMessage);
+
+      await expect(
+        adapter.get('https://api.example.com/test')
+      ).rejects.toThrow('Network error occurred.');
     });
   });
 });

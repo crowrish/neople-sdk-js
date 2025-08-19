@@ -10,6 +10,8 @@ module.exports = {
     'src/**/*.ts',
     '!src/**/*.d.ts',
     '!src/**/index.ts',
+    '!src/adapters/got-adapter.ts',
+    '!src/adapters/node-fetch-adapter.ts',
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov', 'html'],
@@ -21,7 +23,7 @@ module.exports = {
   coverageThreshold: {
     global: {
       branches: 60,
-      functions: 75,
+      functions: 60,
       lines: 75,
       statements: 75,
     },

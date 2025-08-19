@@ -57,13 +57,6 @@ describe('NeopleCyphersUrlBuilder', () => {
       expect(url).toContain(`apikey=${testApiKey}`);
     });
 
-    it('should build correct player equipment URL', () => {
-      const url = builder.getPlayerEquipment('player-123');
-      
-      expect(url).toBe(
-        `${baseUrl}/cy/players/player-123/battleitems?apikey=${testApiKey}`
-      );
-    });
   });
 
   describe('match methods', () => {
@@ -148,13 +141,6 @@ describe('NeopleCyphersUrlBuilder', () => {
       expect(url).toContain(`apikey=${testApiKey}`);
     });
 
-    it('should build correct recommend items URL', () => {
-      const url = builder.getRecommendItems('character-123');
-      
-      expect(url).toBe(
-        `${baseUrl}/cy/characters/character-123/items?apikey=${testApiKey}`
-      );
-    });
   });
 
   describe('batch URL generation', () => {
