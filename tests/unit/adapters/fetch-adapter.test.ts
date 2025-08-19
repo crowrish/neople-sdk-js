@@ -10,7 +10,6 @@ describe('FetchAdapter', () => {
 
   beforeEach(() => {
     adapter = new FetchAdapter();
-    mockFetch.mockClear();
   });
 
   describe('successful requests', () => {

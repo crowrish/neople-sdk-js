@@ -16,9 +16,6 @@ describe('Integration Tests - Mock Server', () => {
   const testApiKey = 'test-integration-key';
   const baseUrl = 'https://api.neople.co.kr';
 
-  beforeEach(() => {
-    mockFetch.mockClear();
-  });
 
   describe('NeopleDFClient Integration', () => {
     let client: NeopleDFClient;

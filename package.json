@@ -7,9 +7,9 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "jest --forceExit",
+    "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --forceExit",
+    "test:coverage": "jest --coverage",
     "test:unit": "jest tests/unit",
     "test:integration": "jest tests/integration",
     "lint": "eslint src --ext .ts",
