@@ -37,10 +37,6 @@ export class CyphersClient extends BaseClient {
     return this.request<Cyphers.PlayerMatches>(`/cy/players/${playerId}/matches`, params);
   }
 
-  // 플레이어 장비 정보 조회
-  async getPlayerEquipment(playerId: string): Promise<any> {
-    return this.request<any>(`/cy/players/${playerId}/battleitems`);
-  }
 
   // 매치 상세 정보 조회
   async getMatchDetail(matchId: string): Promise<any> {
@@ -90,10 +86,6 @@ export class CyphersClient extends BaseClient {
     return this.request<{ rows: Cyphers.CypherSearchResult[] }>('/cy/characters', params);
   }
 
-  // 캐릭터별 추천 아이템 조회
-  async getRecommendItems(characterId: string): Promise<any> {
-    return this.request<any>(`/cy/characters/${characterId}/items`);
-  }
 
   // 투신전 랭킹 조회
   async getTsjRanking(

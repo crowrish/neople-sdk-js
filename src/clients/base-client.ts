@@ -248,9 +248,6 @@ export class NeopleCyphersClient extends BaseClient {
     return this.cyphers.getPlayerMatches(playerId, params);
   }
 
-  async getPlayerEquipment(playerId: string): Promise<any> {
-    return this.cyphers.getPlayerEquipment(playerId);
-  }
 
   async getMatchDetail(matchId: string): Promise<any> {
     return this.cyphers.getMatchDetail(matchId);
@@ -292,9 +289,6 @@ export class NeopleCyphersClient extends BaseClient {
     return this.cyphers.getCyphersInfo(params);
   }
 
-  async getRecommendItems(characterId: string): Promise<any> {
-    return this.cyphers.getRecommendItems(characterId);
-  }
 
   async getTsjRanking(
     tsjType: 'melee' | 'ranged',

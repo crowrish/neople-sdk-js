@@ -42,7 +42,7 @@
     "url": "https://github.com/crowrish/neople-sdk-js/issues"
   },
   "dependencies": {
-    "neople-openapi-types": "^0.3.0"
+    "neople-openapi-types": "^1.0.0"
   },
   "peerDependencies": {
     "axios": ">=0.21.0",
