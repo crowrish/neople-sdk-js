@@ -50,6 +50,54 @@ describe('NeopleDFUrlBuilder', () => {
       );
     });
 
+    it('should build correct character avatar URL', () => {
+      const url = builder.getCharacterAvatar('cain', 'character-123');
+      
+      expect(url).toBe(
+        `${baseUrl}/df/servers/cain/characters/character-123/equip/avatar?apikey=${testApiKey}`
+      );
+    });
+
+    it('should build correct character creature URL', () => {
+      const url = builder.getCharacterCreature('cain', 'character-123');
+      
+      expect(url).toBe(
+        `${baseUrl}/df/servers/cain/characters/character-123/equip/creature?apikey=${testApiKey}`
+      );
+    });
+
+    it('should build correct character flag URL', () => {
+      const url = builder.getCharacterFlag('cain', 'character-123');
+      
+      expect(url).toBe(
+        `${baseUrl}/df/servers/cain/characters/character-123/equip/flag?apikey=${testApiKey}`
+      );
+    });
+
+    it('should build correct character talisman URL', () => {
+      const url = builder.getCharacterTalisman('cain', 'character-123');
+      
+      expect(url).toBe(
+        `${baseUrl}/df/servers/cain/characters/character-123/equip/talisman?apikey=${testApiKey}`
+      );
+    });
+
+    it('should build correct character skill URL', () => {
+      const url = builder.getCharacterSkill('cain', 'character-123');
+      
+      expect(url).toBe(
+        `${baseUrl}/df/servers/cain/characters/character-123/skill/style?apikey=${testApiKey}`
+      );
+    });
+
+    it('should build correct character buff URL', () => {
+      const url = builder.getCharacterBuff('cain', 'character-123');
+      
+      expect(url).toBe(
+        `${baseUrl}/df/servers/cain/characters/character-123/skill/buff?apikey=${testApiKey}`
+      );
+    });
+
     it('should build correct character timeline URL', () => {
       const url = builder.getCharacterTimeline('cain', 'character-123', {
         startDate: '2024-01-01',
