@@ -7,10 +7,11 @@ export class FetchAdapter implements HttpAdapter {
     
     // Create AbortController for timeout if needed
     let signal: AbortSignal | undefined = undefined;
+    let timeoutId: NodeJS.Timeout | undefined = undefined;
     if (config?.timeout) {
       const controller = new AbortController();
       signal = controller.signal;
-      setTimeout(() => controller.abort(), config.timeout);
+      timeoutId = setTimeout(() => controller.abort(), config.timeout);
     }
     
     try {
@@ -66,6 +67,11 @@ export class FetchAdapter implements HttpAdapter {
         error.message || 'Network error occurred.',
         error
       );
+    } finally {
+      // Clean up timeout to prevent hanging
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
     }
   }
 
