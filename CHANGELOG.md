@@ -15,6 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [0.2.5] - 2025-08-19
+
+### Fixed
+- API count discrepancies in documentation (47 → 45 APIs total)
+- Corrected Cyphers API count from 13 to actual 11 implemented APIs
+- Updated documentation dates to August 19, 2025
+- Synchronized Korean and English README files with accurate counts
+
 ## [0.2.4] - 2025-08-19
 
 ### Added

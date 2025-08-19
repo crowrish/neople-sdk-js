@@ -1,6 +1,6 @@
 {
   "name": "neople-sdk-js",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "TypeScript SDK for Neople Open API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
