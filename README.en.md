@@ -65,10 +65,11 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
 - 🔗 Dedicated URL builder classes for URL-only usage
 - **Uses Node.js built-in fetch by default (no dependencies)**
 - **🎉 Complete Neople Open API support (34 Dungeon Fighter + 13 Cyphers = 47 total APIs)**
+- **✅ 99.57% test coverage with 202 comprehensive tests for reliability**
 
 ## Supported APIs
 
-### Dungeon Fighter Online APIs
+### Dungeon Fighter Online APIs (34 APIs)
 - **Basic Information**
   - `getServers()` - Server list
   - `getJobs()` - Job/class list
@@ -114,12 +115,11 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
   - `getAvatarMarketHashtags()` - Avatar market hashtags
   - `getItemHashtags()` - Item hashtags
 
-### Cyphers APIs
+### Cyphers APIs (13 APIs)
 - **Players**
   - `searchPlayer()` - Player search
   - `getPlayerInfo()` - Player information
   - `getPlayerMatches()` - Player match history
-  - `getPlayerEquipment()` - Player equipment information
 - **Matches**
   - `getMatchDetail()` - Match detail information
 - **Rankings**
@@ -131,7 +131,6 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
   - `getCyphersItemDetail()` - Cyphers item detail information
   - `getCyphersMultiItems()` - Multiple Cyphers items information
   - `getCyphersInfo()` - Cyphers character information
-  - `getRecommendItems()` - Recommended items
 
 ## Supported Environments
 
