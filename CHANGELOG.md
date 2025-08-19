@@ -45,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.3] - 2025-01-XX
 
 ### Added
-- Complete Neople Open API support (47 APIs total)
+- Complete Neople Open API support (45 APIs total)
 - Dungeon Fighter APIs (34 total):
   - Basic information: `getServers()`, `getJobs()`
   - Character equipment: `getCharacterAvatar()`, `getCharacterCreature()`, `getCharacterFlag()`, `getCharacterTalisman()`
@@ -55,7 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Auction: `getCharactersByFame()`, `getAuctionSold()`, `getAuctionItem()`
   - Avatar market: `getAvatarMarketSale()`, `getAvatarMarketSold()`, `getAvatarMarketItem()`, `getAvatarMarketSoldItem()`
   - Hashtags: `getAvatarMarketHashtags()`, `getItemHashtags()`
-- Cyphers APIs (13 total):
+- Cyphers APIs (11 total):
   - All essential player, match, ranking, and item APIs
   - TSJ ranking support: `getTsjRanking()`
   - Item management: `getCyphersItemDetail()`, `getCyphersMultiItems()`

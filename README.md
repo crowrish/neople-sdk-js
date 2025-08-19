@@ -14,7 +14,7 @@
 이 SDK는 네오플 오픈 API를 위한 TypeScript/JavaScript 클라이언트입니다.
 [네오플 오픈 API 서비스 이용약관](https://developers.neople.co.kr/contents/policy)을 반드시 준수해야 합니다.
 
-> **참고**: 이 문서는 2025년 8월 14일 기준으로 작성되었습니다.
+> **참고**: 이 문서는 2025년 8월 19일 기준으로 작성되었습니다.
 
 ## Documentation
 [https://crowrish.github.io/neople-sdk-js-docs](https://crowrish.github.io/neople-sdk-js-docs)
@@ -71,7 +71,7 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
 - 풍부한 JSDoc 문서화
 - 던전앤파이터와 사이퍼즈 API 각각 별도 API 키 지원
 - URL만 생성하는 전용 빌더 클래스 제공
-- **네오플 오픈 API 100% 완전 지원 (던전앤파이터 34개, 사이퍼즈 13개 총 47개 API)**
+- **네오플 오픈 API 100% 완전 지원 (던전앤파이터 34개, 사이퍼즈 11개 총 45개 API)**
 - **99.57% 테스트 커버리지로 검증된 안정성 (202개 테스트)**
 
 ## 지원하는 API
@@ -122,7 +122,7 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
   - `getAvatarMarketHashtags()` - 아바타 마켓 해시태그 목록 조회
   - `getItemHashtags()` - 아이템 해시태그 목록 조회
 
-### 사이퍼즈 API(13개)
+### 사이퍼즈 API(11개)
 - **플레이어**
   - `searchPlayer()` - 플레이어 검색
   - `getPlayerInfo()` - 플레이어 정보 조회

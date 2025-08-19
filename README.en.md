@@ -4,7 +4,7 @@
 
 TypeScript SDK for Neople Open API
 
-> **Note**: This documentation is written as of August 14, 2025.
+> **Note**: This documentation is written as of August 19, 2025.
 
 This SDK is a TypeScript/JavaScript client for Neople Open API.
 You must comply with [Neople Open API Terms of Service](https://developers.neople.co.kr/contents/policy).
@@ -64,7 +64,7 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
 - 🎮 Separate API keys support for Dungeon Fighter and Cyphers
 - 🔗 Dedicated URL builder classes for URL-only usage
 - **Uses Node.js built-in fetch by default (no dependencies)**
-- **🎉 Complete Neople Open API support (34 Dungeon Fighter + 13 Cyphers = 47 total APIs)**
+- **🎉 Complete Neople Open API support (34 Dungeon Fighter + 11 Cyphers = 45 total APIs)**
 - **✅ 99.57% test coverage with 202 comprehensive tests for reliability**
 
 ## Supported APIs
@@ -115,7 +115,7 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
   - `getAvatarMarketHashtags()` - Avatar market hashtags
   - `getItemHashtags()` - Item hashtags
 
-### Cyphers APIs (13 APIs)
+### Cyphers APIs (11 APIs)
 - **Players**
   - `searchPlayer()` - Player search
   - `getPlayerInfo()` - Player information
