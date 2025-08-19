@@ -15,6 +15,9 @@ module.exports = {
   coverageReporters: ['text', 'lcov', 'html'],
   setupFilesAfterEnv: ['<rootDir>/tests/helpers/setup.ts'],
   testTimeout: 10000,
+  forceExit: true,
+  detectOpenHandles: false,
+  maxWorkers: 1,
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
