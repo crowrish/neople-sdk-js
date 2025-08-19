@@ -204,5 +204,17 @@ describe('FetchAdapter', () => {
         expect.any(Object)
       );
     });
+
+    it('should handle errors without message', async () => {
+      const errorWithoutMessage: any = new Error();
+      delete errorWithoutMessage.message;
+      errorWithoutMessage.name = 'UnknownError';
+      
+      mockFetch.mockRejectedValueOnce(errorWithoutMessage);
+
+      await expect(
+        adapter.get('https://api.example.com/test')
+      ).rejects.toThrow('Network error occurred.');
+    });
   });
 });
