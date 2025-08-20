@@ -1,6 +1,10 @@
 # neople-sdk-js
 
 [![Korean](https://img.shields.io/badge/README-한국어-red)](./README.md)
+[![Documentation](https://img.shields.io/badge/Documentation-GitHub%20Pages-green)](https://crowrish.github.io/neople-sdk-js-docs/)
+[![npm version](https://img.shields.io/npm/v/neople-sdk-js)](https://www.npmjs.com/package/neople-sdk-js)
+
+<img width="1200" height="400" alt="Frame 2" src="https://github.com/user-attachments/assets/49ffab27-7b04-45c6-9daa-e53ca605b1f2" />
 
 TypeScript SDK for Neople Open API
 
@@ -56,16 +60,16 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
 
 ## Features
 
-- 🔥 Full TypeScript support with complete type safety
-- 🚀 Multiple HTTP client support (Axios, Fetch, Got, node-fetch)
-- 🎯 Supports Node.js backend and Next.js environments
-- 🛡️ Comprehensive error handling
-- 📖 Rich JSDoc documentation
-- 🎮 Separate API keys support for Dungeon Fighter and Cyphers
-- 🔗 Dedicated URL builder classes for URL-only usage
+- TypeScript support with type safety
 - **Uses Node.js built-in fetch by default (no dependencies)**
-- **🎉 Complete Neople Open API support (34 Dungeon Fighter + 11 Cyphers = 45 total APIs)**
-- **✅ 99.57% test coverage with 202 comprehensive tests for reliability**
+- Multiple HTTP client support (Axios, Fetch, Got, node-fetch)
+- Node.js backend and Next.js environment support
+- Comprehensive error handling
+- Rich JSDoc documentation
+- Separate API keys support for Dungeon Fighter and Cyphers
+- Dedicated URL builder classes for URL-only usage
+- **Neople Open API full support (34 Dungeon Fighter + 11 Cyphers = 45 total APIs)**
+- **99.57% test coverage with 202 comprehensive tests for reliability**
 
 ## Supported APIs
 
@@ -134,7 +138,7 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
 
 ## Supported Environments
 
-### ✅ Fully Supported
+### Supported Environments
 - Backend Node.js (Express, Fastify, Koa, etc.)
 - Next.js API Routes (Pages Router, App Router)
 - Next.js Server Actions (App Router 13+)
@@ -142,7 +146,7 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
 - AWS Lambda
 - Discord/Telegram bots
 
-### 🚫 Not Supported
+### Not Supported
 - Browser environments (due to CORS policy restrictions)
 
 ## API Key Setup
@@ -250,15 +254,15 @@ const responses = await Promise.all(promises);
 
 ## Supported HTTP Clients
 
-The SDK supports multiple HTTP client libraries through adapters:
+The SDK **uses Node.js built-in fetch by default (no dependencies)** and supports multiple HTTP client libraries through the adapter pattern:
 
 ### FetchAdapter (Default)
-Uses Node.js 18+ built-in fetch
+**Uses Node.js 18+ built-in fetch with no additional dependencies.**
 
 ```typescript
 import { NeopleDFClient, FetchAdapter } from 'neople-sdk-js';
 
-// Default adapter (FetchAdapter)
+// Default adapter (uses built-in fetch, no dependencies)
 const client = new NeopleDFClient(process.env.NEOPLE_DF_API_KEY);
 
 // Or explicitly use FetchAdapter
@@ -267,13 +271,13 @@ const clientWithFetch = new NeopleDFClient(
   new FetchAdapter()
 );
 
-// API call example
+// API call example - internally uses Node.js built-in fetch
 const result = await client.searchCharacter('character_name');
 console.log(result);
 ```
 
 ### AxiosAdapter
-For axios library users
+Uses axios library
 
 ```typescript
 import { NeopleDFClient, AxiosAdapter } from 'neople-sdk-js';
@@ -293,7 +297,7 @@ console.log(result);
 ```
 
 ### NodeFetchAdapter
-For older Node.js versions (using node-fetch library)
+For older Node.js versions (uses node-fetch library)
 
 ```typescript
 import { NeopleDFClient, NodeFetchAdapter } from 'neople-sdk-js';
@@ -310,7 +314,7 @@ console.log(result);
 ```
 
 ### GotAdapter
-For Got library users (Node.js optimized)
+Uses Got library (Node.js optimized)
 
 ```typescript
 import { NeopleDFClient, GotAdapter } from 'neople-sdk-js';

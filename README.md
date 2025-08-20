@@ -63,7 +63,7 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
 
 ## 주요 기능
 
-- 완전한 TypeScript 지원으로 타입 안전성 보장
+- TypeScript 지원으로 타입 안전성 보장
 - **기본적으로 Node.js 내장 fetch 사용 (의존성 없음)**
 - 다양한 HTTP 클라이언트 지원 (Axios, Fetch, Got, node-fetch)
 - Node.js 백엔드 및 Next.js 환경 지원
@@ -71,7 +71,7 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
 - 풍부한 JSDoc 문서화
 - 던전앤파이터와 사이퍼즈 API 각각 별도 API 키 지원
 - URL만 생성하는 전용 빌더 클래스 제공
-- **네오플 오픈 API 100% 완전 지원 (던전앤파이터 34개, 사이퍼즈 11개 총 45개 API)**
+- **네오플 오픈 API 전체 지원 (던전앤파이터 34개, 사이퍼즈 11개 총 45개 API)**
 - **99.57% 테스트 커버리지로 검증된 안정성 (202개 테스트)**
 
 ## 지원하는 API
@@ -141,7 +141,7 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
 
 ## 지원 환경
 
-### 완벽 지원
+### 지원 환경
 - Backend Node.js (Express, Fastify, Koa 등)
 - Next.js API Routes (Pages Router, App Router)
 - Next.js Server Actions (App Router 13+)
