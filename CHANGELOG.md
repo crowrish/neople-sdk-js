@@ -15,6 +15,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.0.0] - 2025-08-31
+
+### Changed
+- **BREAKING**: First stable release - Production ready
+- Updated TypeScript configuration (removed deprecated moduleResolution)
+- Improved documentation accuracy and consistency across README files
+
+### Added  
+- Complete API coverage documentation (34 Dungeon Fighter + 11 Cyphers APIs)
+- Enhanced project documentation with internal API clarification
+
+### Fixed
+- API count discrepancies in documentation 
+- TypeScript configuration deprecation warnings
+- README file consistency between Korean and English versions
+
 ## [0.2.6] - 2025-08-19
 
 ### Changed

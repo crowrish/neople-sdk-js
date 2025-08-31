@@ -68,11 +68,10 @@ const matches = await cyphersClient.getPlayerMatches('playerId', { gameTypeId: '
 - 다양한 HTTP 클라이언트 지원 (Axios, Fetch, Got, node-fetch)
 - Node.js 백엔드 및 Next.js 환경 지원
 - 포괄적인 에러 처리
-- 풍부한 JSDoc 문서화
-- 던전앤파이터와 사이퍼즈 API 각각 별도 API 키 지원
+- JSDoc 문서화
 - URL만 생성하는 전용 빌더 클래스 제공
 - **네오플 오픈 API 전체 지원 (던전앤파이터 34개, 사이퍼즈 11개 총 45개 API)**
-- **99.57% 테스트 커버리지로 검증된 안정성 (202개 테스트)**
+- **99.57% 테스트 커버리지 (202개 테스트)**
 
 ## 지원하는 API
 
